@@ -5,6 +5,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
@@ -95,8 +97,8 @@ public class SignController {
 	}
 	
 	@GetMapping(value = "/getLocation")
-	public Result<Object> getLocation() {
-		return getLocation.getBaiduMap();
+	public Result<Object> getLocation(HttpServletRequest request) {
+		return getLocation.getBaiduMap(request);
 	}
 	
 	@GetMapping(value = "/getWeather")

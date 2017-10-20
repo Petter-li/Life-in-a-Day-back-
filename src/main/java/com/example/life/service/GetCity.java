@@ -29,8 +29,15 @@ public class GetCity {
 				Map<String, Object> map = new HashMap<>();
 				Integer parentId = lc.getParent_id();
 				Location fatherLocation = directRepository.findOne(parentId);
-				map.put("childCity", lc.getName());
-				map.put("fatherCity", fatherLocation.getName());
+				map.put("title", lc.getName());
+				map.put("value", fatherLocation.getName());
+				resultList.add(map);
+			}
+			Integer code = lc.getCode();
+			if(code == 110000 || code == 120000 || code == 310000 || code == 500000){
+				Map<String, Object> map = new HashMap<>();
+				map.put("title", lc.getName());
+				map.put("value", "直辖市");
 				resultList.add(map);
 			}
 		}
