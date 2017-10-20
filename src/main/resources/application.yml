@@ -4,7 +4,7 @@ spring:
     - prod
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/dblife
+    url: jdbc:mysql://127.0.0.1:3306/dblife?characterEncoding=utf-8
     username: root
     password: 123456
   jpa:

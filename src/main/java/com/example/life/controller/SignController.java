@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.life.Repository.UserRepository;
 import com.example.life.domain.Result;
 import com.example.life.domain.User;
+import com.example.life.service.GetCity;
 import com.example.life.service.GetLocation;
 import com.example.life.service.GetWeather;
 import com.example.life.service.LoginShow;
@@ -39,6 +40,9 @@ public class SignController {
 	
 	@Autowired
 	private GetWeather getWeather;
+	
+	@Autowired
+	private GetCity getCity;
 	
 	@PostMapping(value = "/sign")
 	public Result<User> userAdd(@Validated(value = {ValidateSign.class}) User user, BindingResult bindingResult){
@@ -98,6 +102,11 @@ public class SignController {
 	@GetMapping(value = "/getWeather")
 	public Result<Object> GetWeather(@RequestParam("city") String city) {
 		return getWeather.getWeather(city);
+	}
+	
+	@GetMapping(value = "/getCity")
+	public Result<Object> GetCity(@RequestParam("name") String name) {
+		return getCity.getCity(name);
 	}
 	
 	@InitBinder
